@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Users Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="http://localhost:9000/users" class="nav-link active">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost:9000/albums" class="nav-link">Albums</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost:9000/posts" class="nav-link">Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost:9000/todos" class="nav-link">Todos</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+
+                <div class="col-3">{{.User.Username}} / {{.User.Name}}</div>
+                <div class="col-3">{{.User.Email}}</div>
+                <div class="col-3">{{.User.Phone}}</div>
+                <div class="col-3">{{.User.Website}}</div>
+
+            <div class="clearfix"></div>
+            <hr />
+
+            <h1>Todo List</h1>
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Completed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {{range .User.Todos}}
+                    <tr>
+                        <th scope="row">{{.ID}}</th>
+                        <td>
+                            <a href="/todos/{{.ID}}">{{.Title}}</a>
+                        </td>
+                        <td>
+                            {{if .Completed}}
+                            <div class="alert alert-success" role="alert">
+                                Tamamlandı
+                              </div>
+                            {{else}}
+                            <div class="alert alert-danger" role="alert">
+                                Tamamlanmadı
+                              </div>
+                            {{end}}
+                        </td>
+                    </tr>
+                {{end}}
+                </tbody>
+              </table>
+
+
+
+        </div>
+    </div>
+</body>
+</html>

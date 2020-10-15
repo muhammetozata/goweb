@@ -8,8 +8,9 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type ApiMessage struct {
-	Message string `json:message`
+// APIMessage is messages
+type APIMessage struct {
+	Message string `json:"message"`
 }
 
 func getMessage(rw http.ResponseWriter, r *http.Request) {
@@ -17,7 +18,7 @@ func getMessage(rw http.ResponseWriter, r *http.Request) {
 
 	fmt.Println(arr)
 
-	message := ApiMessage{"Istenilen id:" + arr["id"]}
+	message := APIMessage{"Istenilen id:" + arr["id"]}
 
 	output, err := json.Marshal(message)
 
@@ -28,7 +29,7 @@ func getMessage(rw http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(rw, string(output))
 }
 
-func main() {
+func tt() {
 
 	r := mux.NewRouter()
 

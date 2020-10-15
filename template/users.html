@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Users Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="http://localhost:9000/users" class="nav-link disabled">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost:9000/albums" class="nav-link">Albums</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost:9000/posts" class="nav-link">Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost:9000/todos" class="nav-link">Todos</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <h1>Users</h1>
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">WebSite</th>
+                    <th scope="col">Todo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {{range .Users}}
+                    <tr>
+                        <th scope="row">{{.ID}}</th>
+                        <td>
+                            <a href="/users/{{.ID}}">{{.Username}}</a>
+                        </td>
+                        <td>{{.Name}}</td>
+                        <td>{{.Email}}</td>
+                        <td>{{.Phone}}</td>
+                        <td>{{.Website}}</td>
+                        <td>{{.Todos | len}}</td>
+                    </tr>
+                {{end}}
+                </tbody>
+              </table>
+
+
+
+        </div>
+    </div>
+</body>
+</html>
